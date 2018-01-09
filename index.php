@@ -6,6 +6,6 @@
         <title></title>
     </head>
     <body>
-		
+		Starting Page
     </body>
 </html>

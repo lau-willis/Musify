@@ -1,4 +1,4 @@
-<?php include "includes/header.php";?>
+<?php include "includes/includedFiles.php";?>
 
 <?php 
 	if(isset($_GET['id'])){
@@ -41,7 +41,8 @@
 								<span class='artistName'>{$albumArtist->getName()}</span>
 							</div>
 							<div class='trackOptions'>
-								<img class='optionsButton' src='assets/images/icons/more.png'>
+								<input type='hidden' class='songId' value='". $albumSong->getId() ."'>
+								<img class='optionsButton' src='assets/images/icons/more.png' onclick='showOptionsMenu(this)'>
 							</div>
 							<div class='trackDuration'>
 								<span class='duration'>{$albumSong->getDuration()}</span>
@@ -53,9 +54,11 @@
 			<script>
 				var tempSongIds = '<?php echo json_encode($songIdArray); ?>';
 				tempPlaylist = JSON.parse(tempSongIds);
-
 			</script>
 		</ul>
 	</div>
 
-<?php include "includes/footer.php";?>
+	<nav class="optionsMenu">
+		<input type="hidden" class="songId">
+		<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
+	</nav>

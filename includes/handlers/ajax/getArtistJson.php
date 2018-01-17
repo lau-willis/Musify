@@ -2,7 +2,7 @@
 
 if(isset($_POST['artistId'])){
 	$artistId = $_POST['artistId'];
-	$query = mysqli_query($con, "SELECT name FROM artists where id = '$artistId'");
+	$query = mysqli_query($con, "SELECT * FROM artists where id = '$artistId'");
 	$resultArray = mysqli_fetch_assoc($query);
 
 	echo json_encode($resultArray);
